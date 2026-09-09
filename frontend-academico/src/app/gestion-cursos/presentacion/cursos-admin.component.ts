@@ -3,6 +3,7 @@ import { CommonModule } from "@angular/common";
 import { FormBuilder, ReactiveFormsModule, Validators } from "@angular/forms";
 import { GestionarCursosCasoUso } from "../../gestion-cursos/dominio/casos-de-uso/gestionar-cursos.caso-uso";
 import { ModalComponent } from "../../../shared/ui/modal/modal.component";
+import { NotificationService } from "../../../infra/notificacion/notification.service";
 import { Categoria, Curso } from "../dominio/modelos/modelos";
 
 @Component({
@@ -14,6 +15,7 @@ import { Categoria, Curso } from "../dominio/modelos/modelos";
 export class CursosAdminComponent {
   protected readonly cursoAdmin: GestionarCursosCasoUso = inject(GestionarCursosCasoUso);
   private readonly fb = inject(FormBuilder);
+  private readonly notification = inject(NotificationService);
 
   // Única fuente de verdad de las categorías válidas: vive en el caso de uso.
   protected readonly categorias = this.cursoAdmin.categoriasValidas;
@@ -73,10 +75,11 @@ export class CursosAdminComponent {
   }
 
   async eliminar(curso: Curso): Promise<void> {
-    const confirmado = confirm(
+    const confirmed = await this.notification.confirmDelete(
+      "Eliminar curso",
       `¿Eliminar "${curso.nombre}"? Las calificaciones y clases de horario asociadas a este curso quedarían huérfanas.`
     );
-    if (!confirmado) return;
+    if (!confirmed) return;
     await this.cursoAdmin.eliminar(curso.id);
   }
 }

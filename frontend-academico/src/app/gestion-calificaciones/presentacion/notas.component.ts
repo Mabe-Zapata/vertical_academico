@@ -94,4 +94,10 @@ export class NotasComponent {
     if (!confirmado) return;
     await this.calificacionAdmin.eliminar(registro.id);
   }
+
+  estadoNota(nota: number): { texto: string; bg: string; text: string } {
+    if (nota >= 9) return { texto: "Excelente", bg: "bg-emerald-100", text: "text-emerald-700" };
+    if (nota >= 7) return { texto: "Aprobada", bg: "bg-amber-100", text: "text-amber-700" };
+    return { texto: "En riesgo", bg: "bg-red-100", text: "text-red-700" };
+  }
 }

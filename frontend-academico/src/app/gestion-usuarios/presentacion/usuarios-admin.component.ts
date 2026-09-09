@@ -4,6 +4,8 @@ import { FormBuilder, ReactiveFormsModule, Validators } from "@angular/forms";
 import { GestionarUsuariosCasoUso } from "../dominio/casos-de-uso/gestionar-usuarios.caso-uso";
 import { GestionarSesionCasoUso } from "../../gestion-sesiones/dominio/casos-de-uso/gestionar-sesion.caso-uso";
 import { ModalComponent } from "../../../shared/ui/modal/modal.component";
+import { NotificationService } from "../../../infra/notificacion/notification.service";
+import { avatarColor } from "../../shared/ui/avatar-color";
 import { Rol, UsuarioRecord } from "../dominio/modelos/modelos";
 
 @Component({
@@ -16,6 +18,8 @@ export class UsuariosAdminComponent {
   protected readonly usuarioAdmin: GestionarUsuariosCasoUso = inject(GestionarUsuariosCasoUso);
   protected readonly auth: GestionarSesionCasoUso = inject(GestionarSesionCasoUso);
   private readonly fb = inject(FormBuilder);
+  private readonly notification = inject(NotificationService);
+  protected readonly avatarColor = avatarColor;
 
   // Única fuente de verdad de los roles válidos: vive en el caso de uso.
   protected readonly roles = this.usuarioAdmin.rolesValidos;
@@ -95,11 +99,17 @@ export class UsuariosAdminComponent {
 
   async eliminar(usuario: UsuarioRecord): Promise<void> {
     if (usuario.id === this.auth.usuario()?.id) {
-      alert("No puedes eliminar tu propio usuario mientras tienes la sesión iniciada.");
+      const confirmed = await this.notification.confirmDelete(
+        "Acción no permitida",
+        "No puedes eliminar tu propio usuario mientras tienes la sesión iniciada."
+      );
       return;
     }
-    const confirmado = confirm(`¿Eliminar a "${usuario.nombre}"? Esta acción no se puede deshacer.`);
-    if (!confirmado) return;
+    const confirmed = await this.notification.confirmDelete(
+      "Eliminar usuario",
+      `¿Estás seguro de eliminar a ${usuario.nombre}? Esta acción no se puede deshacer.`
+    );
+    if (!confirmed) return;
     await this.usuarioAdmin.eliminar(usuario.id);
   }
 }

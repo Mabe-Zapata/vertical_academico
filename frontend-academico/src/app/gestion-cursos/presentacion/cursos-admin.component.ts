@@ -2,8 +2,8 @@ import { Component, inject, signal } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormBuilder, ReactiveFormsModule, Validators } from "@angular/forms";
 import { GestionarCursosCasoUso } from "../../gestion-cursos/dominio/casos-de-uso/gestionar-cursos.caso-uso";
-import { ModalComponent } from "../../../shared/ui/modal/modal.component";
-import { NotificationService } from "../../../infra/notificacion/notification.service";
+import { ModalComponent } from "../../shared/ui/modal/modal.component";
+import { NotificationService } from "../../infra/notificacion/notification.service";
 import { Categoria, Curso } from "../dominio/modelos/modelos";
 
 @Component({

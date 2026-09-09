@@ -1,13 +1,4 @@
-import { RecursoConsulta } from "../modelos/recurso-consulta";
-import { CalificacionesResponse, HorarioResponse } from "../modelos/modelos";
-
-/**
- * Puerto de solo lectura para la vista agregada que consume el estudiante
- * (calificaciones con promedio ya calculado, horario con curso/profesor
- * ya resueltos). El "join" ya lo hace el backend — este puerto solo
- * declara que el dominio necesita poder leerlo de forma reactiva.
- */
-export abstract class AcademicoLecturaPuerto {
-  abstract readonly calificaciones: RecursoConsulta<CalificacionesResponse>;
-  abstract readonly horario: RecursoConsulta<HorarioResponse>;
-}
+// Re-exporta el puerto de gestion-sesiones para que resumen lo use consistentemente.
+// así todos los slices usan el mismo token de inyección.
+export { AcademicoLecturaPuerto } from "../../../gestion-sesiones/dominio/puertos/academico-lectura.puerto";
+export type { RecursoConsulta } from "../../../gestion-sesiones/dominio/modelos/recurso-consulta";

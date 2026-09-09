@@ -1,9 +1,3 @@
-import { RecursoConsulta } from "../modelos/recurso-consulta";
-import { HorarioRecord, HorarioFormValue } from "../modelos/modelos";
-
-export abstract class HorarioRepositorioPuerto {
-  abstract readonly horario: RecursoConsulta<HorarioRecord[]>;
-  abstract crear(datos: HorarioFormValue): Promise<void>;
-  abstract actualizar(id: number, datos: HorarioFormValue): Promise<void>;
-  abstract eliminar(id: number): Promise<void>;
-}
+// Re-exporta desde gestion-sesiones para mantener consistencia de token DI.
+export { HorarioRepositorioPuerto } from "../../../gestion-sesiones/dominio/puertos/horario-repositorio.puerto";
+export type { RecursoConsulta } from "../../../gestion-sesiones/dominio/modelos/recurso-consulta";

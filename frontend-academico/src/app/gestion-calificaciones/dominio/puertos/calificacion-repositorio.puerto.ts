@@ -1,9 +1,3 @@
-import { RecursoConsulta } from "../modelos/recurso-consulta";
-import { CalificacionRecord, CalificacionFormValue } from "../modelos/modelos";
-
-export abstract class CalificacionRepositorioPuerto {
-  abstract readonly calificaciones: RecursoConsulta<CalificacionRecord[]>;
-  abstract crear(datos: CalificacionFormValue): Promise<void>;
-  abstract actualizar(id: number, datos: CalificacionFormValue): Promise<void>;
-  abstract eliminar(id: number): Promise<void>;
-}
+// Re-exporta desde gestion-sesiones para mantener consistencia de token DI.
+export { CalificacionRepositorioPuerto } from "../../../gestion-sesiones/dominio/puertos/calificacion-repositorio.puerto";
+export type { RecursoConsulta } from "../../../gestion-sesiones/dominio/modelos/recurso-consulta";

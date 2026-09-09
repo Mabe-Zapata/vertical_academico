@@ -6,7 +6,7 @@ import { GestionarSesionCasoUso } from "../dominio/casos-de-uso/gestionar-sesion
 import { GestionarCalificacionesCasoUso } from "../dominio/casos-de-uso/gestionar-calificaciones.caso-uso";
 import { GestionarCursosCasoUso } from "../dominio/casos-de-uso/gestionar-cursos.caso-uso";
 import { GestionarUsuariosCasoUso } from "../dominio/casos-de-uso/gestionar-usuarios.caso-uso";
-import { ModalComponent } from "../../../shared/ui/modal/modal.component";
+import { ModalComponent } from "../../shared/ui/modal/modal.component";
 import { CalificacionRecord } from "../dominio/modelos/modelos";
 
 @Component({

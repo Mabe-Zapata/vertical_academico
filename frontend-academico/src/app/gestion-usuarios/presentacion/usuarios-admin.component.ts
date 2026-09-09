@@ -3,8 +3,8 @@ import { CommonModule } from "@angular/common";
 import { FormBuilder, ReactiveFormsModule, Validators } from "@angular/forms";
 import { GestionarUsuariosCasoUso } from "../dominio/casos-de-uso/gestionar-usuarios.caso-uso";
 import { GestionarSesionCasoUso } from "../../gestion-sesiones/dominio/casos-de-uso/gestionar-sesion.caso-uso";
-import { ModalComponent } from "../../../shared/ui/modal/modal.component";
-import { NotificationService } from "../../../infra/notificacion/notification.service";
+import { ModalComponent } from "../../shared/ui/modal/modal.component";
+import { NotificationService } from "../../infra/notificacion/notification.service";
 import { avatarColor } from "../../shared/ui/avatar-color";
 import { Rol, UsuarioRecord } from "../dominio/modelos/modelos";
 

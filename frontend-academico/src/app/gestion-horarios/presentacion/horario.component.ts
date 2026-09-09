@@ -6,7 +6,7 @@ import { GestionarSesionCasoUso } from "../../gestion-sesiones/dominio/casos-de-
 import { GestionarHorarioCasoUso } from "../dominio/casos-de-uso/gestionar-horario.caso-uso";
 import { GestionarCursosCasoUso } from "../../gestion-cursos/dominio/casos-de-uso/gestionar-cursos.caso-uso";
 import { GestionarUsuariosCasoUso } from "../../gestion-usuarios/dominio/casos-de-uso/gestionar-usuarios.caso-uso";
-import { ModalComponent } from "../../../shared/ui/modal/modal.component";
+import { ModalComponent } from "../../shared/ui/modal/modal.component";
 import { Dia, HorarioRecord } from "../dominio/modelos/modelos";
 
 interface DiaPill {

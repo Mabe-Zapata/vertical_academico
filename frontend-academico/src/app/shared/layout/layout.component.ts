@@ -1,7 +1,9 @@
-import { Component, inject } from "@angular/core";
+import { Component, inject, signal } from "@angular/core";
 import { RouterOutlet, RouterLink, RouterLinkActive, Router, NavigationEnd } from "@angular/router";
 import { filter, map, startWith } from "rxjs";
 import { toSignal } from "@angular/core/rxjs-interop";
+import { SidebarComponent } from "./sidebar/sidebar.component";
+import { NavbarComponent } from "./navbar/navbar.component";
 import { GestionarSesionCasoUso } from "../../gestion-sesiones/dominio/casos-de-uso/gestionar-sesion.caso-uso";
 
 interface RouteHeaderData {
@@ -12,19 +14,19 @@ interface RouteHeaderData {
 @Component({
   selector: "app-layout",
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, SidebarComponent, NavbarComponent],
   templateUrl: "./layout.component.html",
 })
 export class LayoutComponent {
-  // Se mantiene el nombre "auth" (aunque ahora es un caso de uso, no un
-  // servicio) para no tener que tocar layout.component.html.
   protected readonly auth: GestionarSesionCasoUso = inject(GestionarSesionCasoUso);
   private readonly router = inject(Router);
 
+  protected readonly sidebarOpen = signal(false);
+
   /**
    * Lee { breadcrumb, title } de la ruta hija activa para el header.
-   * Camina el árbol de SNAPSHOTS (no el árbol "vivo" de ActivatedRoute)
-   * para evitar errores de sincronización durante la navegación.
+   * Camina el arbol de SNAPSHOTS (no el arbol "vivo" de ActivatedRoute)
+   * para evitar errores de sincronizacion durante la navegacion.
    */
   protected readonly header = toSignal(
     this.router.events.pipe(
@@ -46,5 +48,9 @@ export class LayoutComponent {
   onLogout(): void {
     this.auth.cerrarSesion();
     this.router.navigate(["/login"]);
+  }
+
+  toggleSidebar(): void {
+    this.sidebarOpen.update((v) => !v);
   }
 }

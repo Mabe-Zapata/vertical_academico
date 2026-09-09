@@ -3,6 +3,12 @@
 @theme {
   --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 
+  /* AURA theme colors */
+  --color-aura-sidebar: #0b1739;
+  --color-aura-sidebar-soft: #13224f;
+  --color-aura-primary: #0d44b5;
+  --color-aura-primary-light: #8faef4;
+
   --color-brand-950: #0a3733;
   --color-brand-900: #0f4c46;
   --color-brand-800: #145a52;

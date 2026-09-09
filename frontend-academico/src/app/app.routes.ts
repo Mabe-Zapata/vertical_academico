@@ -1,9 +1,9 @@
 import { Routes } from "@angular/router";
-import { LoginComponent } from "./features/login/login.component";
+import { LoginComponent } from "./gestion-sesiones/presentacion/login.component";
 import { LayoutComponent } from "./shared/layout/layout.component";
-import { authGuard } from "./infraestructura/guards/auth.guard";
-import { roleGuard } from "./infraestructura/guards/role.guard";
-import { adminOnlyGuard } from "./infraestructura/guards/admin-only.guard";
+import { authGuard } from "./gestion-sesiones/infraestructura/guards/auth.guard";
+import { roleGuard } from "./gestion-sesiones/infraestructura/guards/role.guard";
+import { adminOnlyGuard } from "./gestion-sesiones/infraestructura/guards/admin-only.guard";
 
 export const routes: Routes = [
   { path: "login", component: LoginComponent },
@@ -14,31 +14,31 @@ export const routes: Routes = [
     children: [
       {
         path: "resumen",
-        loadComponent: () => import("./features/resumen/resumen.component").then((m) => m.ResumenComponent),
+        loadComponent: () => import("./resumen/presentacion/resumen.component").then((m) => m.ResumenComponent),
         data: { breadcrumb: "Resumen", title: "Resumen" },
       },
       {
         path: "notas",
-        loadComponent: () => import("./features/notas/notas.component").then((m) => m.NotasComponent),
+        loadComponent: () => import("./gestion-calificaciones/presentacion/notas.component").then((m) => m.NotasComponent),
         data: { breadcrumb: "Mis Notas", title: "Mis Notas" },
       },
       {
         path: "horario",
-        loadComponent: () => import("./features/horario/horario.component").then((m) => m.HorarioComponent),
+        loadComponent: () => import("./gestion-horarios/presentacion/horario.component").then((m) => m.HorarioComponent),
         data: { breadcrumb: "Horario", title: "Mi Horario" },
       },
       {
         path: "admin/cursos",
         canActivate: [roleGuard],
         loadComponent: () =>
-          import("./features/admin/cursos/cursos-admin.component").then((m) => m.CursosAdminComponent),
+          import("./gestion-cursos/presentacion/cursos-admin.component").then((m) => m.CursosAdminComponent),
         data: { breadcrumb: "Administración / Cursos", title: "Cursos" },
       },
       {
         path: "admin/usuarios",
         canActivate: [adminOnlyGuard],
         loadComponent: () =>
-          import("./features/admin/usuarios/usuarios-admin.component").then((m) => m.UsuariosAdminComponent),
+          import("./gestion-usuarios/presentacion/usuarios-admin.component").then((m) => m.UsuariosAdminComponent),
         data: { breadcrumb: "Administración / Usuarios", title: "Usuarios" },
       },
       { path: "", redirectTo: "resumen", pathMatch: "full" },

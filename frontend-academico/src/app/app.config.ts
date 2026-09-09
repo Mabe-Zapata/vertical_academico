@@ -4,22 +4,22 @@ import { provideHttpClient, withInterceptors, withFetch } from "@angular/common/
 
 import { routes } from "./app.routes";
 
-import { AuthRepositorioPuerto } from "./dominio/puertos/auth-repositorio.puerto";
-import { SesionAlmacenPuerto } from "./dominio/puertos/sesion-almacen.puerto";
-import { AcademicoLecturaPuerto } from "./dominio/puertos/academico-lectura.puerto";
-import { CursoRepositorioPuerto } from "./dominio/puertos/curso-repositorio.puerto";
-import { UsuarioRepositorioPuerto } from "./dominio/puertos/usuario-repositorio.puerto";
-import { CalificacionRepositorioPuerto } from "./dominio/puertos/calificacion-repositorio.puerto";
-import { HorarioRepositorioPuerto } from "./dominio/puertos/horario-repositorio.puerto";
+import { AuthRepositorioPuerto } from "./gestion-sesiones/dominio/puertos/auth-repositorio.puerto";
+import { SesionAlmacenPuerto } from "./gestion-sesiones/dominio/puertos/sesion-almacen.puerto";
+import { AcademicoLecturaPuerto } from "./gestion-sesiones/dominio/puertos/academico-lectura.puerto";
+import { CursoRepositorioPuerto } from "./gestion-sesiones/dominio/puertos/curso-repositorio.puerto";
+import { UsuarioRepositorioPuerto } from "./gestion-sesiones/dominio/puertos/usuario-repositorio.puerto";
+import { CalificacionRepositorioPuerto } from "./gestion-sesiones/dominio/puertos/calificacion-repositorio.puerto";
+import { HorarioRepositorioPuerto } from "./gestion-sesiones/dominio/puertos/horario-repositorio.puerto";
 
-import { AuthRepositorioHttp } from "./infraestructura/adaptadores-secundarios/http/auth-repositorio.http";
-import { SesionAlmacenLocalStorage } from "./infraestructura/adaptadores-secundarios/almacenamiento/sesion-almacen.local-storage";
-import { AcademicoLecturaHttp } from "./infraestructura/adaptadores-secundarios/http/academico-lectura.http";
-import { CursoRepositorioHttp } from "./infraestructura/adaptadores-secundarios/http/curso-repositorio.http";
-import { UsuarioRepositorioHttp } from "./infraestructura/adaptadores-secundarios/http/usuario-repositorio.http";
-import { CalificacionRepositorioHttp } from "./infraestructura/adaptadores-secundarios/http/calificacion-repositorio.http";
-import { HorarioRepositorioHttp } from "./infraestructura/adaptadores-secundarios/http/horario-repositorio.http";
-import { authInterceptor } from "./infraestructura/adaptadores-secundarios/http/auth.interceptor";
+import { AuthRepositorioHttp } from "./gestion-sesiones/infraestructura/adaptadores-secundarios/http/auth-repositorio.http";
+import { SesionAlmacenLocalStorage } from "./gestion-sesiones/infraestructura/adaptadores-secundarios/almacenamiento/sesion-almacen.local-storage";
+import { AcademicoLecturaHttp } from "./gestion-sesiones/infraestructura/adaptadores-secundarios/http/academico-lectura.http";
+import { CursoRepositorioHttp } from "./gestion-sesiones/infraestructura/adaptadores-secundarios/http/curso-repositorio.http";
+import { UsuarioRepositorioHttp } from "./gestion-sesiones/infraestructura/adaptadores-secundarios/http/usuario-repositorio.http";
+import { CalificacionRepositorioHttp } from "./gestion-sesiones/infraestructura/adaptadores-secundarios/http/calificacion-repositorio.http";
+import { HorarioRepositorioHttp } from "./gestion-sesiones/infraestructura/adaptadores-secundarios/http/horario-repositorio.http";
+import { authInterceptor } from "./gestion-sesiones/infraestructura/adaptadores-secundarios/http/auth.interceptor";
 
 /**
  * RAÍZ DE COMPOSICIÓN del frontend: el único archivo que conecta cada

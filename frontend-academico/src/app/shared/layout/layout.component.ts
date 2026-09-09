@@ -2,7 +2,7 @@ import { Component, inject } from "@angular/core";
 import { RouterOutlet, RouterLink, RouterLinkActive, Router, NavigationEnd } from "@angular/router";
 import { filter, map, startWith } from "rxjs";
 import { toSignal } from "@angular/core/rxjs-interop";
-import { GestionarSesionCasoUso } from "../../dominio/casos-de-uso/gestionar-sesion.caso-uso";
+import { GestionarSesionCasoUso } from "../../gestion-sesiones/dominio/casos-de-uso/gestionar-sesion.caso-uso";
 
 interface RouteHeaderData {
   breadcrumb: string;
@@ -18,7 +18,7 @@ interface RouteHeaderData {
 export class LayoutComponent {
   // Se mantiene el nombre "auth" (aunque ahora es un caso de uso, no un
   // servicio) para no tener que tocar layout.component.html.
-  protected readonly auth = inject(GestionarSesionCasoUso);
+  protected readonly auth: GestionarSesionCasoUso = inject(GestionarSesionCasoUso);
   private readonly router = inject(Router);
 
   /**

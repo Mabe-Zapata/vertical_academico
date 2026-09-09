@@ -1,5 +1,5 @@
 import { Component, inject, signal } from "@angular/core";
-import { RouterOutlet, RouterLink, RouterLinkActive, Router, NavigationEnd } from "@angular/router";
+import { RouterOutlet, RouterLink, Router, NavigationEnd } from "@angular/router";
 import { filter, map, startWith } from "rxjs";
 import { toSignal } from "@angular/core/rxjs-interop";
 import { SidebarComponent } from "./sidebar/sidebar.component";
@@ -14,7 +14,7 @@ interface RouteHeaderData {
 @Component({
   selector: "app-layout",
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, SidebarComponent, NavbarComponent],
+  imports: [RouterOutlet, RouterLink, SidebarComponent, NavbarComponent],
   templateUrl: "./layout.component.html",
 })
 export class LayoutComponent {

@@ -25,13 +25,13 @@ describe("NotificationService", () => {
 
       expect(result).toBe(true);
       expect(Swal.fire).toHaveBeenCalledOnce();
-      const callArgs = vi.mocked(Swal.fire).mock.calls[0][0];
-      expect(callArgs.title).toBe("Eliminar usuario");
-      expect(callArgs.text).toBe("¿Estás seguro?");
-      expect(callArgs.showCancelButton).toBe(true);
-      expect(callArgs.reverseButtons).toBe(true);
-      expect(callArgs.confirmButtonText).toBe("Eliminar");
-      expect(callArgs.confirmButtonColor).toBe("#dc2626"); // red-600
+      const callArgs = vi.mocked(Swal.fire).mock.calls[0][0] as unknown as Record<string, unknown>;
+      expect(callArgs["title"]).toBe("Eliminar usuario");
+      expect(callArgs["text"]).toBe("¿Estás seguro?");
+      expect(callArgs["showCancelButton"]).toBe(true);
+      expect(callArgs["reverseButtons"]).toBe(true);
+      expect(callArgs["confirmButtonText"]).toBe("Eliminar");
+      expect(callArgs["confirmButtonColor"]).toBe("#dc2626"); // red-600
     });
 
     it("returns false when user cancels", async () => {
@@ -51,13 +51,13 @@ describe("NotificationService", () => {
 
       expect(result).toBe(true);
       expect(Swal.fire).toHaveBeenCalledOnce();
-      const callArgs = vi.mocked(Swal.fire).mock.calls[0][0];
-      expect(callArgs.title).toBe("Guardar cambios");
-      expect(callArgs.text).toBe("¿Guardar?");
-      expect(callArgs.showCancelButton).toBe(true);
-      expect(callArgs.reverseButtons).toBe(true);
-      expect(callArgs.confirmButtonText).toBe("Guardar");
-      expect(callArgs.confirmButtonColor).toBe("#0d44b5"); // aura-primary
+      const callArgs = vi.mocked(Swal.fire).mock.calls[0][0] as unknown as Record<string, unknown>;
+      expect(callArgs["title"]).toBe("Guardar cambios");
+      expect(callArgs["text"]).toBe("¿Guardar?");
+      expect(callArgs["showCancelButton"]).toBe(true);
+      expect(callArgs["reverseButtons"]).toBe(true);
+      expect(callArgs["confirmButtonText"]).toBe("Guardar");
+      expect(callArgs["confirmButtonColor"]).toBe("#0d44b5"); // aura-primary
     });
 
     it("returns false when user cancels", async () => {
